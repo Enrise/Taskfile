@@ -1,0 +1,61 @@
+#!/bin/bash
+set -eo pipefail
+
+# =========================================================
+## Documentation
+# =========================================================
+
+function task:docs { ## Build the documentation files
+	title "Building documentation"
+	echo "Creating html pages from markdown..."
+	sleep 3
+	echo "Documentation built in dist/ folder."
+}
+
+# =========================================================
+## Taskfile
+# =========================================================
+
+BLUE=$(printf '\033[36m')
+YELLOW=$(printf '\033[33m')
+RESET=$(printf '\033[0m')
+
+function title {
+	echo -e "\n${BLUE}=>${RESET} $1\n"
+}
+
+function banner {
+	echo ""
+	echo "████████╗ █████╗ ███████╗██╗  ██╗███████╗██╗██╗     ███████╗"
+	echo "╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝██╔════╝██║██║     ██╔════╝"
+	echo "   ██║   ███████║███████╗█████╔╝ █████╗  ██║██║     █████╗"
+	echo "   ██║   ██╔══██║╚════██║██╔═██╗ ██╔══╝  ██║██║     ██╔══╝"
+	echo "   ██║   ██║  ██║███████║██║  ██╗██║     ██║███████╗███████╗"
+	echo "   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚══════╝"
+}
+
+function task:help { ## Show all available tasks
+	title "Available tasks"
+	awk 'BEGIN {FS = " { [#][#][ ]?"} /^([a-zA-Z_-]*:?.*)(\{ )?[#][#][ ]?/ \
+		{printf "\033[33m%-34s\033[0m %s\n", $1, $2}' $0 |\
+		sed -E "s/[#]{2,}[ ]*/${RESET}/g" |\
+		sed -E "s/function task:*/  /g"
+	echo -e "\n${BLUE}Usage:${RESET} $0 ${YELLOW}<task>${RESET} <args>"
+}
+
+function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
+	title "Creating task shorthand"
+	if [ -f /usr/local/bin/task ]
+	then
+		echo "/usr/local/bin/task already exists."
+	else
+		echo -e "You are about to create /usr/local/bin/task that requires root permission..."
+		sudo curl --location --silent --output /usr/local/bin/task https://bit.ly/task-shorthand
+		sudo chmod +x /usr/local/bin/task
+	fi
+	echo -e "${BLUE}You can now use:${RESET} task ${YELLOW}<task>${RESET} <args>"
+}
+
+# Execute tasks (defaults to help)
+banner
+"task:${@:-help}"

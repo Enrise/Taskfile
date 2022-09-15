@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# =========================================================
+# More info on Taskfile can be found here:
+# https://github.com/rick-nu/Taskfile
+# =========================================================
+
+set -eo pipefail
+
+CURRENT_DIR=$(pwd)
+RED=$(printf '\033[31m')
+RESET=$(printf '\033[0m')
+
+while [ -d $CURRENT_DIR ] && [ $CURRENT_DIR != '/' ]; do
+	cd $CURRENT_DIR
+
+	if [ ! -f ./Taskfile ]
+	then
+		echo -e "${RED}ERROR: ${RESET}./Taskfile not found in this directory."
+		exit 1
+	fi
+
+	./Taskfile $@
+	exit $?
+done
