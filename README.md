@@ -9,7 +9,9 @@ project and run common tasks via super simple commands.
 
 This project gives you a `Taskfile` base, and gives you a collection of usefull tasks to help out on your project.
 
-Check [the full documentation](https://github.com/rick-nu/Taskfile).
+- [What is a Taskfile](docs/what-is-a-taskfile.md)
+- [The Taskfile base](docs/base.md)
+- [Usefull tasks](docs/usefull-tasks.md)
 
 ## Credits
 
