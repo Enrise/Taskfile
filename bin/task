@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-
-# =========================================================
-# More info on Taskfile can be found here:
-# https://github.com/rick-nu/Taskfile
-# =========================================================
-
 set -eo pipefail
+
+# =========================================================
+# Taskfile gives you a set of quick tasks for your project
+# More info: https://bit.ly/taskfile-base
+# =========================================================
 
 CURRENT_DIR=$(pwd)
 RED=$(printf '\033[31m')

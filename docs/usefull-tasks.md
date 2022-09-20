@@ -1,6 +1,6 @@
-# Usefull tasks
-
 ➤ [Overview](../README.md) ➤ Usefull tasks
+
+# Usefull tasks
 
 We strongly recommend that your project uses a project section containing a `init` and a `update` task. Check out our
 example:

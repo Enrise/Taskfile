@@ -2,9 +2,8 @@
 set -eo pipefail
 
 # =========================================================
-# Taskfile gives you a set of quick tasks for your project.
-# Run ./Taskfile in your CLI to see all available tasks.
-# More info on: https://bit.ly/taskfile-base
+# Taskfile gives you a set of quick tasks for your project
+# More info: https://bit.ly/taskfile-base
 # =========================================================
 
 # =========================================================

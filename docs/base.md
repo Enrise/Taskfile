@@ -1,6 +1,6 @@
-# The Taskfile base
-
 ➤ [Overview](../README.md) ➤ Taskfile base
+
+# The Taskfile base
 
 Below is the Taskfile base we recommend you use. Below we will explain what sections are in the base and why.
 
@@ -9,9 +9,8 @@ Below is the Taskfile base we recommend you use. Below we will explain what sect
 set -eo pipefail
 
 # =========================================================
-# Taskfile gives you a set of quick tasks for your project.
-# Run ./Taskfile in your CLI to see all available tasks.
-# More info on: https://bit.ly/taskfile-base
+# Taskfile gives you a set of quick tasks for your project
+# More info: https://bit.ly/taskfile-base
 # =========================================================
 
 # TODO:
@@ -79,8 +78,8 @@ a new process.
 
 ```bash
 function task:my-new-task { ## My new task example
-    title "Starting with my new task"
-    # Your task continues here...
+	title "Starting with my new task"
+	# Your task continues here...
 }
 ```
 
@@ -99,4 +98,4 @@ your system, so you can use `task <task>` in the future. It will look for a `Tas
 
 # Adding relevant tasks
 
-Relevant tasks for your project can be found in [the overview](../README.md).
+Relevant tasks for your project can be found in [the tasks overview](./usefull-tasks.md).

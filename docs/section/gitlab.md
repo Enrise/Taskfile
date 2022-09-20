@@ -1,11 +1,15 @@
-# GitLab
-
 ➤ [Overview](../../README.md) ➤ [Usefull tasks](../usefull-tasks.md) ➤ GitLab
+
+# GitLab
 
 If you use GitLab and want an easy way to check out Merge Requests locally,
 `task:mr` is a great addition to your project section in the Taskfile.
 
 ```bash
+# ===========================
+## Project
+# ===========================
+
 function task:mr { ## Check out merge request <number> and update
 	project:checkout-mr
 	project:update
