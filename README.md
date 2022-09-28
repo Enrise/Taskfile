@@ -5,7 +5,13 @@ project and run common tasks via super simple commands.
 
 ![CLI Taskfile preview](./images/cli-preview.gif)
 
-## Create your own taskfile
+## Why
+
+- Automate your most common tasks (updating, starting development, building, etc...)
+- Have a uniform method to run tasks for all your pojects
+- No project specific knowledge is required to get things done
+
+# Create your own taskfile
 
 This project gives you a `Taskfile` base, and gives you a collection of usefull tasks to help out on your project.
 
@@ -24,12 +30,12 @@ Check out the following sections for tasks that could be helpfull for your proje
 - [GitHub](./section/github.md)
 - [GitLab](./section/gitlab.md)
 
-## Credits
+# Credits
 
 This Taskfile setup is based on [Adrian Cooney's Taskfile setup](https://github.com/adriancooney/Taskfile) and
 [Enrise](https://enrise.com) their internal implementation of the Taskfile.
 
-## Contribute
+# Contribute
 
 Feel free to add your own Taskfile tasks via a PR. The more usefull tasks, the easier we make the life of other
 developers.
