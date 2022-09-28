@@ -3,15 +3,26 @@
 A Taskfile adds a list of commonly used tasks in a quick overview in your CLI. Enable your users to quickly setup a
 project and run common tasks via super simple commands.
 
-![CLI Taskfile preview](./docs/images/cli-preview.gif)
+![CLI Taskfile preview](./images/cli-preview.gif)
 
 ## Create your own taskfile
 
 This project gives you a `Taskfile` base, and gives you a collection of usefull tasks to help out on your project.
 
-- [What is a Taskfile](docs/what-is-a-taskfile.md)
-- [The Taskfile base](docs/base.md)
-- [Usefull tasks](docs/usefull-tasks.md)
+- [The Taskfile base](./taskfile-base.md)
+
+We strongly recommend that your project uses a project section containing a `init` and a `update` task. Check out our
+example:
+
+- [Project section](./section/project.md)
+
+## Usefull tasks
+
+Check out the following sections for tasks that could be helpfull for your project's Taskfile:
+
+- [Docker](./section/docker.md)
+- [GitHub](./section/github.md)
+- [GitLab](./section/gitlab.md)
 
 ## Credits
 

@@ -1,5 +1,3 @@
-➤ [Overview](../README.md) ➤ Taskfile base
-
 # The Taskfile base
 
 Below is the Taskfile base we recommend you use. Below we will explain what sections are in the base and why.
@@ -98,4 +96,4 @@ your system, so you can use `task <task>` in the future. It will look for a `Tas
 
 # Adding relevant tasks
 
-Relevant tasks for your project can be found in [the tasks overview](./usefull-tasks.md).
+Relevant tasks for your project can be found in [the tasks overview](./README.md#usefull-tasks).
