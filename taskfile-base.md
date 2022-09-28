@@ -11,6 +11,8 @@ set -eo pipefail
 # More info: https://go.futureportal.com/taskfile
 # =========================================================
 
+PATH=./node_modules/.bin:$PATH
+
 # TODO:
 # This is where you add relevant tasks for your project.
 
@@ -87,6 +89,14 @@ A help section for your Taskfile is generated automatically. This is done by sca
 if a line contains `##` (double comment). When it finds a `##`, it will either use the line as a new section in the
 help overview, or when it's combined with a `function task:* { ## Descriptoin` then the comment will be used as the
 task description. Using this will give your user a clear overview of what tasks can be run.
+
+## PATH
+
+In the taskfile base, you see that the PATH variable is updated with an additional path
+(`PATH=./node_modules/.bin:$PATH`). In this example `./node_modules/.bin` is added to the bash PATH variable. For
+example, if you have a `eslint` binary in that folder, you can now call `eslint --fix .` directly from your tasks,
+instead of having to call `./node_modules/.bin/eslint --fix .`. If you don't need it, remove it. If you need to include
+a different binary path, update it.
 
 ## Shorthand
 
