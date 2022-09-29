@@ -1,5 +1,3 @@
-➤ [Overview](../../README.md) ➤ [Usefull tasks](../usefull-tasks.md) ➤ GitHub
-
 # GitHub
 
 If you use GitHub and want an easy way to check out Pull Requests locally,

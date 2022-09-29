@@ -1,15 +1,16 @@
 # Taskfile
 
-A Taskfile adds a list of commonly used tasks in a quick overview in your CLI. Enable your users to quickly setup a
-project and run common tasks via super simple commands.
+A `./Taskfile` is a task runner in plain and easy [Bash](https://nl.wikipedia.org/wiki/Bash). It adds a list of available tasks to your project.
 
 ![CLI Taskfile preview](./images/cli-preview.gif)
 
 ## Why
 
-- Automate your most common tasks (updating, starting development, building, etc...)
-- Have a uniform method to run tasks for all your pojects
-- No project specific knowledge is required to get things done
+- Works on any OS (any bash terminal)
+- A uniform way to run your projects
+- Very easy to use
+- Automate your most common tasks (updating, starting, building, etc...)
+- Easy to understand and maintain
 
 # Create your own taskfile
 

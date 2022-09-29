@@ -1,5 +1,3 @@
-➤ [Overview](../../README.md) ➤ [Usefull tasks](../usefull-tasks.md) ➤ Project
-
 # Project section
 
 A project section can be very usefull to quickly get your project up and running,

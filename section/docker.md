@@ -1,5 +1,3 @@
-➤ [Overview](../../README.md) ➤ [Usefull tasks](../usefull-tasks.md) ➤ Docker
-
 # Docker
 
 An absolute must if your project is running via docker locally.

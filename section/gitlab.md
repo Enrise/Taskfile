@@ -1,5 +1,3 @@
-➤ [Overview](../../README.md) ➤ [Usefull tasks](../usefull-tasks.md) ➤ GitLab
-
 # GitLab
 
 If you use GitLab and want an easy way to check out Merge Requests locally,
