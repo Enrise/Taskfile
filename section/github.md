@@ -9,7 +9,7 @@ If you use GitHub and want an easy way to check out Pull Requests locally,
 # ===========================
 
 function task:pr { ## Check out pull request <number> and update
-	project:checkout-pr
+	project:checkout-pr $1
 	project:update
 }
 
