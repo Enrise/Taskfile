@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "A ./Taskfile is a task runner in plain and easy Bash. It adds a list of available tasks to your project.",
 	"scripts": {
-		"format": "prettier --write .",
+		"format": "./Taskfile pre-commit",
 		"prepare": "husky install"
 	},
 	"repository": {

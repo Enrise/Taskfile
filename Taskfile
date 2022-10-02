@@ -44,6 +44,22 @@ function project:install-dependencies {
 	npm install
 }
 
+function task:prettify { ## Prettify all files
+	title "Cleaning codestyle"
+	echo "Prettifying files..."
+	prettier --write --list-different .
+	echo "Done."
+}
+
+# =========================================================
+## Automation
+# =========================================================
+
+function task:pre-commit { ## Clean up code before committing
+	task:prettify
+	title "Comitting"
+}
+
 # =========================================================
 ## Taskfile
 # =========================================================
