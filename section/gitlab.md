@@ -9,7 +9,7 @@ If you use GitLab and want an easy way to check out Merge Requests locally,
 # ===========================
 
 function task:mr { ## Check out merge request <number> and update
-	project:checkout-mr
+	project:checkout-mr $1
 	project:update
 }
 
