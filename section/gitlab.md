@@ -1,7 +1,7 @@
 # GitLab
 
-If you use GitLab and want an easy way to check out Merge Requests locally,
-`task:mr` is a great addition to your project section in the Taskfile.
+If you use GitLab and want an easy way to check out Merge Requests locally, `task:mr` is a great
+addition to your project section in the Taskfile.
 
 ```bash
 # ===========================

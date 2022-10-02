@@ -1,6 +1,7 @@
 # The Taskfile base
 
-Below is the Taskfile base we recommend you use. Below we will explain what sections are in the base and why.
+Below is the Taskfile base we recommend you use. Below we will explain what sections are in the base
+and why.
 
 ```bash
 #!/bin/bash
@@ -67,14 +68,15 @@ banner
 
 ## Banner
 
-By default we include a banner in your Taskfile. In the base you have a pretty ascii art of "Taskfile", but we recommend
-you replace this with your own project title. You can use http://patorjk.com/software/taag/ for that.
+By default we include a banner in your Taskfile. In the base you have a pretty ascii art of
+"Taskfile", but we recommend you replace this with your own project title. You can use
+http://patorjk.com/software/taag/ for that.
 
 ## Title
 
-In order to give all the tasks a pretty and clear structre, a title function is added that we recommend you use at
-the start of every task. This will create a nice divider and let your user know that your Taskfile is about to start
-a new process.
+In order to give all the tasks a pretty and clear structre, a title function is added that we
+recommend you use at the start of every task. This will create a nice divider and let your user know
+that your Taskfile is about to start a new process.
 
 ```bash
 function task:my-new-task { ## My new task example
@@ -85,24 +87,27 @@ function task:my-new-task { ## My new task example
 
 ## Help section
 
-A help section for your Taskfile is generated automatically. This is done by scanning the Taskfile itself, and checking
-if a line contains `##` (double comment). When it finds a `##`, it will either use the line as a new section in the
-help overview, or when it's combined with a `function task:* { ## Descriptoin` then the comment will be used as the
-task description. Using this will give your user a clear overview of what tasks can be run.
+A help section for your Taskfile is generated automatically. This is done by scanning the Taskfile
+itself, and checking if a line contains `##` (double comment). When it finds a `##`, it will either
+use the line as a new section in the help overview, or when it's combined with a
+`function task:* { ## Descriptoin` then the comment will be used as the task description. Using this
+will give your user a clear overview of what tasks can be run.
 
 ## PATH
 
 In the taskfile base, you see that the PATH variable is updated with an additional path
-(`PATH=./node_modules/.bin:$PATH`). In this example `./node_modules/.bin` is added to the bash PATH variable. For
-example, if you have a `eslint` binary in that folder, you can now call `eslint --fix .` directly from your tasks,
-instead of having to call `./node_modules/.bin/eslint --fix .`. If you don't need it, remove it. If you need to include
-a different binary path, update it.
+(`PATH=./node_modules/.bin:$PATH`). In this example `./node_modules/.bin` is added to the bash PATH
+variable. For example, if you have a `eslint` binary in that folder, you can now call
+`eslint --fix .` directly from your tasks, instead of having to call
+`./node_modules/.bin/eslint --fix .`. If you don't need it, remove it. If you need to include a
+different binary path, update it.
 
 ## Shorthand
 
-If you're a lazy developer (that's a good thing, trust me), you're probably already tired of having to type
-`./Taskfile <task>` all the time. The `task:shorthand` gives you a quick and easy option to create a `task` binary on
-your system, so you can use `task <task>` in the future. It will look for a `Taskfile` in the current directory.
+If you're a lazy developer (that's a good thing, trust me), you're probably already tired of having
+to type `./Taskfile <task>` all the time. The `task:shorthand` gives you a quick and easy option to
+create a `task` binary on your system, so you can use `task <task>` in the future. It will look for
+a `Taskfile` in the current directory.
 
 # Adding relevant tasks
 

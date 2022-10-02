@@ -1,0 +1,40 @@
+{
+	"name": "@futureportal/taskfile",
+	"version": "1.0.0",
+	"description": "A ./Taskfile is a task runner in plain and easy Bash. It adds a list of available tasks to your project.",
+	"scripts": {
+		"format": "prettier --write .",
+		"prepare": "husky install"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/FuturePortal/Taskfile.git"
+	},
+	"keywords": [
+		"bash",
+		"cli",
+		"automation",
+		"makefile",
+		"task-runner",
+		"taskfile"
+	],
+	"authors": [
+		{
+			"name": "Rick van der Staaij",
+			"url": "https://rick.nu"
+		},
+		{
+			"name": "Contributors",
+			"url": "https://github.com/FuturePortal/Taskfile/graphs/contributors"
+		}
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/FuturePortal/Taskfile/issues"
+	},
+	"homepage": "https://github.com/FuturePortal/Taskfile#readme",
+	"devDependencies": {
+		"husky": "^8.0.1",
+		"prettier": "^2.7.1"
+	}
+}
