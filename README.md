@@ -36,8 +36,7 @@ Check out the following sections for tasks that could be helpfull for your proje
 # Credits
 
 This Taskfile setup is based on
-[Adrian Cooney's Taskfile setup](https://github.com/adriancooney/Taskfile) and
-[Enrise](https://enrise.com) their internal implementation of the Taskfile.
+[Adrian Cooney's Taskfile](https://github.com/adriancooney/Taskfile).
 
 # Contribute
 

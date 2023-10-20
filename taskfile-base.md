@@ -3,13 +3,13 @@
 Below is the Taskfile base we recommend you use. Below we will explain what sections are in the base
 and why.
 
-```bash
+```shell
 #!/bin/bash
 set -eo pipefail
 
 # =========================================================
 # Taskfile gives you a set of quick tasks for your project
-# More info: https://go.futureportal.com/taskfile
+# More info: https://enri.se/taskfile
 # =========================================================
 
 PATH=./node_modules/.bin:$PATH
@@ -55,7 +55,7 @@ function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 		echo "/usr/local/bin/task already exists."
 	else
 		echo -e "You are about to create /usr/local/bin/task that requires root permission..."
-		sudo curl --location --silent --output /usr/local/bin/task https://go.futureportal.com/task-bin
+		sudo curl --location --silent --output /usr/local/bin/task https://enri.se/taskfile-bin
 		sudo chmod +x /usr/local/bin/task
 	fi
 	echo -e "${BLUE}You can now use:${RESET} task ${YELLOW}<task>${RESET} <args>"
@@ -68,7 +68,7 @@ banner
 
 ## Banner
 
-By default we include a banner in your Taskfile. In the base you have a pretty ascii art of
+By default, we include a banner in your Taskfile. In the base you have a pretty ascii art of
 "Taskfile", but we recommend you replace this with your own project title. You can use
 http://patorjk.com/software/taag/ for that.
 
@@ -78,7 +78,7 @@ In order to give all the tasks a pretty and clear structre, a title function is 
 recommend you use at the start of every task. This will create a nice divider and let your user know
 that your Taskfile is about to start a new process.
 
-```bash
+```shell
 function task:my-new-task { ## My new task example
 	title "Starting with my new task"
 	# Your task continues here...

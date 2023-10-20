@@ -4,7 +4,7 @@ A project section can be very usefull to quickly get your project up and running
 latest changes. A common practice is to include a `task:init` to get your entire project up and
 running with a single command, and a `task:update` to make sure everything is up to date.
 
-```bash
+```shell
 # ===========================
 ## Project
 # ===========================

@@ -1,5 +1,5 @@
 {
-	"name": "@futureportal/taskfile",
+	"name": "@enrise/taskfile",
 	"version": "1.0.0",
 	"description": "A ./Taskfile is a task runner in plain and easy Bash. It adds a list of available tasks to your project.",
 	"scripts": {
@@ -8,7 +8,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/FuturePortal/Taskfile.git"
+		"url": "git+https://github.com/Enrise/Taskfile.git"
 	},
 	"keywords": [
 		"bash",
@@ -25,14 +25,14 @@
 		},
 		{
 			"name": "Contributors",
-			"url": "https://github.com/FuturePortal/Taskfile/graphs/contributors"
+			"url": "https://github.com/Enrise/Taskfile/graphs/contributors"
 		}
 	],
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/FuturePortal/Taskfile/issues"
+		"url": "https://github.com/Enrise/Taskfile/issues"
 	},
-	"homepage": "https://github.com/FuturePortal/Taskfile#readme",
+	"homepage": "https://github.com/Enrise/Taskfile#readme",
 	"devDependencies": {
 		"husky": "^8.0.1",
 		"prettier": "^2.7.1"

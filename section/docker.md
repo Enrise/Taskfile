@@ -2,7 +2,7 @@
 
 An absolute must if your project is running via docker locally.
 
-```bash
+```shell
 # ===========================
 ## Docker
 # ===========================

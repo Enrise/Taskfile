@@ -3,7 +3,7 @@
 If you use GitHub and want an easy way to check out Pull Requests locally, `task:pr` is a great
 addition to your project section in the Taskfile.
 
-```bash
+```shell
 # ===========================
 ## Project
 # ===========================
