@@ -11,14 +11,17 @@ RED=$(printf '\033[31m')
 RESET=$(printf '\033[0m')
 
 while [ -d $CURRENT_DIR ] && [ $CURRENT_DIR != '/' ]; do
-	cd $CURRENT_DIR
-
-	if [ ! -f ./Taskfile ]
+	if [ -f ./Taskfile ]
 	then
-		echo -e "${RED}ERROR: ${RESET}./Taskfile not found in this directory."
-		exit 1
+		# Taskfile found, execute the given task
+		./Taskfile $@
+		exit $?
+	else
+		# Taskfile not found, trying the parent directory
+		cd ../
+		CURRENT_DIR=$(pwd)
 	fi
-
-	./Taskfile $@
-	exit $?
 done
+
+echo -e "${RED}ERROR: ${RESET}./Taskfile not found in the current or parent directories."
+exit 1
