@@ -16,6 +16,7 @@ PATH=./node_modules/.bin:$PATH
 
 # TODO:
 # This is where you add relevant tasks for your project.
+# Examples: https://enri.se/taskfile-examples
 
 # =========================================================
 ## Taskfile
