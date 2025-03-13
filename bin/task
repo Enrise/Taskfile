@@ -30,8 +30,7 @@ if [[ -z "$TASKFILE" ]]; then
 fi
 
 if [[ $1 == 'comp_targets' ]]; then
-	awk 'BEGIN {FS = " { [#][#][ ]?"} /^function task([a-zA-Z_-]*:?.*)(\{ )?[#][#][ ]?/ {printf "%s:%s\n", $1, $2}' \
-		"$TASKFILE" \
+	awk 'BEGIN {FS = " { [#][#][ ]?"} /^function task:(.*)[#][#][ ]?/ {printf "%s:%s\n", $1, $2}' "$TASKFILE" \
 		| sed -E 's/[#]{2,}[ ]*//g' \
 		| sed -E 's/function task://g'
 	exit 1
