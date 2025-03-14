@@ -58,7 +58,7 @@ using the double `##` comments you've learned about above. Now it's clear how yo
 
 # Auto-completion
 
-Autocompletion works when you use `zsh` with `oh-my-zsh`. Create the following file in your oh-my-zsh directory
+Autocompletion works when you use `zsh` and `oh-my-zsh`. Create the following file in your oh-my-zsh directory
 `~/.oh-my-zsh/completions/_task.zsh`:
 
 ```shell
@@ -81,9 +81,6 @@ _task "$@"
 ```
 
 Now after running `task shorthand`, your `task` commands will get autocompleted.
-
-**Note:** if your task name contains `:` characters, the autocomplete functionality will break. Replace the `:`
-character in your task names to prevent this.
 
 # Credits
 
