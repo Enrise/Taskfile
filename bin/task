@@ -10,19 +10,32 @@ RED=$(printf '\033[31m')
 RESET=$(printf '\033[0m')
 
 while [ -d $CURRENT_DIR ] && [ $CURRENT_DIR != '/' ]; do
-	if [ -f ./Taskfile ];
-	then
-		./Taskfile $@
-		exit $?
-	elif [ -f ./Makefile ]; then
-		echo -e "${RED}Found a Makefile instead of a Taskfile...${RESET}\n"
-		make $@
-		exit $?
-	else
-		cd ../
-		CURRENT_DIR=$(pwd)
+	if [[ -e "${CURRENT_DIR}/Taskfile" ]]; then
+		TASKFILE="${CURRENT_DIR}/Taskfile"
+		break
 	fi
+
+	if [[ -e "${CURRENT_DIR}/Makefile" ]]; then
+		echo -e "Found a ${RED}Makefile${RESET} instead of a Taskfile...\n"
+		make --directory=$CURRENT_DIR $@
+		exit $?
+	fi
+
+	CURRENT_DIR=$(dirname $CURRENT_DIR)
 done
 
-echo -e "${RED}ERROR: ${RESET}./Taskfile not found in the current or parent directories."
-exit 1
+if [[ -z "$TASKFILE" ]]; then
+	echo -e "${RED}ERROR: ${RESET}./Taskfile not found in the current or parent directories."
+	exit 1
+fi
+
+if [[ $1 == 'comp_targets' ]]; then
+	awk 'BEGIN {FS = " { [#][#][ ]?"} /^function task:(.*)[#][#][ ]?/ {gsub(/:/, "\\:", $1); printf "%s:%s\n", $1, $2}' \
+		"$TASKFILE" \
+		| sed -E 's/[#]{2,}[ ]*//g' \
+		| sed -E 's/function task\\://g'
+	exit 1
+fi
+
+$TASKFILE $@
+exit $?
