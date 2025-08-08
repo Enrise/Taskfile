@@ -83,34 +83,34 @@ _task "$@"
 
 Now after running `task shorthand`, your `task` commands will get autocompleted.
 
-## SubTaskfiles
+## Splitting Taskfiles
 
 Have a (mono)repo with multiple projects, a group of less-used or specialized tasks or just waaay to many tasks for a
-single Taskfile? SubTaskfiles might be for you! They allow you to divide your tasks across multiple files while still
-(also) calling them from a single one.
+single Taskfile? Splitting your Taskfiles might be for you! This allows you to divide your tasks across multiple files
+while still (also) calling them from a single one.
 
-There are two flavours, but in both cases tasks from the subTaskfile are called "via" a task in the root Taskfile,
+There are two types, but in both cases tasks from the secondary Taskfile are called "via" a task in the root Taskfile,
 like this: `./Taskfile foo <task> <args>`
 
-### Full SubTaskfile
+### Remote Taskfile
 
-This flavour of subTaskfile is more verbose, but can be used on its own as well. Most useful in (mono)repos where people might
-be working on part as often as the whole project.
+This type is more verbose, but can be used on its own as well. Most useful in (mono)repos where people might be working
+in a subdirectory as often as on the project as a whole.
 
-In the main Taskfile you call the subTaskfile like any other script:
+In the main Taskfile you call the secondary like any other script:
 ```shell
 function task:foo { ## bar
-	./path/to/subtaskfile/Taskfile "${@-help}"
+	./path/to/secondary/Taskfile "${@-help}"
 }
 ```
 
-The subTaskfile is just a regular Taskfile, including utilities like `task:help`, `file:ensure` and a line with `task:"${@-help}"`
-at the bottom.
+The secondary is just a regular Taskfile, including utilities (semi) optional ones like `task:help`, `file:ensure` and
+the required line with `task:"${@-help}"`at the bottom.
 
-### Lean SubTaskfile
+### SubTaskfile
 
-This flavour of subTaskfile cannot be called on its own, but has a lot less boilerplate. Most useful for splitting off a
-group of tasks that can be logically grouped together, possibly because they are rarely used.
+This type cannot be called on its own, but has a lot less boilerplate. Most useful for splitting off a group of tasks
+that can be logically grouped together, for specific tasks or because they are rarely used.
 
 In the main Taskfile:
 ```shell
@@ -125,7 +125,7 @@ function task:foo { ## bar
 
 The subTaskfile just needs to contain the tasks and sections you need, but has a few notes:
 ```shell
-# Files in the subTaskfile's directory need to be prefixed with $SUB_TASKFILE_DIR
+# When you use files in the subTaskfile's directory, you need prefix them with $SUB_TASKFILE_DIR
 function task:call-script { ## Call a script
 	"$SUB_TASKFILE_DIR/some-script.sh"
 }
