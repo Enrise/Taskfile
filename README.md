@@ -56,7 +56,8 @@ Lines with only a single `#` will not appear as section in `task:help` and can b
 Running `./Taskfile help`, the `task:help` function is triggered. This task will list all available sections and tasks
 using the double `##` comments you've learned about above. Now it's clear how you can run any other task!
 
-# Auto-completion
+# Advanced
+## Auto-completion
 
 Autocompletion works when you use `zsh` and `oh-my-zsh`. Create the following file in your oh-my-zsh directory
 `~/.oh-my-zsh/completions/_task.zsh`:
@@ -81,6 +82,59 @@ _task "$@"
 ```
 
 Now after running `task shorthand`, your `task` commands will get autocompleted.
+
+## SubTaskfiles
+
+Have a (mono)repo with multiple projects, a group of less-used or specialized tasks or just waaay to many tasks for a
+single Taskfile? SubTaskfiles might be for you! They allow you to divide your tasks across multiple files while still
+(also) calling them from a single one.
+
+There are two flavours, but in both cases tasks from the subTaskfile are called "via" a task in the root Taskfile,
+like this: `./Taskfile foo <task> <args>`
+
+### Full SubTaskfile
+
+This flavour of subTaskfile is more verbose, but can be used on its own as well. Most useful in (mono)repos where people might
+be working on part as often as the whole project.
+
+In the main Taskfile you call the subTaskfile like any other script:
+```shell
+function task:foo { ## bar
+	./path/to/subtaskfile/Taskfile "${@-help}"
+}
+```
+
+The subTaskfile is just a regular Taskfile, including utilities like `task:help`, `file:ensure` and a line with `task:"${@-help}"`
+at the bottom.
+
+### Lean SubTaskfile
+
+This flavour of subTaskfile cannot be called on its own, but has a lot less boilerplate. Most useful for splitting off a
+group of tasks that can be logically grouped together, possibly because they are rarely used.
+
+In the main Taskfile:
+```shell
+function task:foo { ## bar
+	SUB_TASKFILE_DIR="./path/to/subtaskfile/"
+
+	source "$SUB_TASKFILE_DIR/Taskfile"
+
+	task:"${@-_help}"
+}
+```
+
+The subTaskfile just needs to contain the tasks and sections you need, but has a few notes:
+```shell
+# Files in the subTaskfile's directory need to be prefixed with $SUB_TASKFILE_DIR
+function task:call-script { ## Call a script
+	"$SUB_TASKFILE_DIR/some-script.sh"
+}
+
+# Without this, you cannot run `./Taskfile foo` or `./Taskfile foo help`
+function task:_help { ## Show all available tasks
+	task:help "$SUB_TASKFILE_DIR/Taskfile"
+}
+```
 
 # Credits
 
