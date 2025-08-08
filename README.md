@@ -83,56 +83,47 @@ _task "$@"
 
 Now after running `task shorthand`, your `task` commands will get autocompleted.
 
-## Splitting Taskfiles
+## SubTaskfiles
 
 Have a (mono)repo with multiple projects, a group of less-used or specialized tasks or just waaay to many tasks for a
-single Taskfile? Splitting your Taskfiles might be for you! This allows you to divide your tasks across multiple files
-while still (also) calling them from a single one.
+single Taskfile? Splitting your Taskfile might be for you! Using SubTaskfiles allows you to divide your tasks across
+multiple files while still calling them from a single one. Most useful for splitting off a group of tasks that can be
+logically grouped together, like for specific use-cases or because they are rarely used.
 
-There are two types, but in both cases tasks from the secondary Taskfile are called "via" a task in the root Taskfile,
-like this: `./Taskfile foo <task> <args>`
+Example use-cases: git-hooks, frontend- / backend-specific tasks, tasks that fix (infrequently occurring) bugs, etc.
 
-### Remote Taskfile
+SubTaskfiles can't be run directly, but are always run "via" a task in the root Taskfile, like this:
+`Usage: ./Taskfile foo <task> <args>`
 
-This type is more verbose, but can be used on its own as well. Most useful in (mono)repos where people might be working
-in a subdirectory as often as on the project as a whole.
+### How
 
-In the main Taskfile you call the secondary like any other script:
+Put this in the root Taskfile:
 ```shell
 function task:foo { ## bar
-	./path/to/secondary/Taskfile "${@-help}"
-}
-```
+	SUBTASKFILE_DIR="./path/to/subtaskfile/"
 
-The secondary is just a regular Taskfile, including utilities (semi) optional ones like `task:help`, `file:ensure` and
-the required line with `task:"${@-help}"`at the bottom.
-
-### SubTaskfile
-
-This type cannot be called on its own, but has a lot less boilerplate. Most useful for splitting off a group of tasks
-that can be logically grouped together, for specific tasks or because they are rarely used.
-
-In the main Taskfile:
-```shell
-function task:foo { ## bar
-	SUB_TASKFILE_DIR="./path/to/subtaskfile/"
-
-	source "$SUB_TASKFILE_DIR/Taskfile"
+	source "$SUBTASKFILE_DIR/SubTaskfile"
 
 	task:"${@-_help}"
 }
+
+# Optional: use proxy-tasks like this for tasks you want to run straight from the root Taskfile
+function task:baz { ## Call `foo baz` directly
+	task:foo baz
+}
 ```
 
-The subTaskfile just needs to contain the tasks and sections you need, but has a few notes:
+Give SubTaskfile the filename `SubTaskfile`. It needs to contain only the tasks and sections you think useful (while
+still having access to stuff like `file:ensure` from the root Taskfile!), but it has a few notes:
 ```shell
-# When you use files in the subTaskfile's directory, you need prefix them with $SUB_TASKFILE_DIR
+# When you refer to files in the subTaskfile's directory, you need prefix them with $SUBTASKFILE_DIR
 function task:call-script { ## Call a script
-	"$SUB_TASKFILE_DIR/some-script.sh"
+	"$SUBTASKFILE_DIR/some-script.sh"
 }
 
 # Without this, you cannot run `./Taskfile foo` or `./Taskfile foo help`
 function task:_help { ## Show all available tasks
-	task:help "$SUB_TASKFILE_DIR/Taskfile"
+	task:help "$SUBTASKFILE_DIR/SubTaskfile"
 }
 ```
 
