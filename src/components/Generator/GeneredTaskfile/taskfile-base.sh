@@ -53,6 +53,7 @@ function title {
 }
 
 function task:help { ## Show all available tasks
+	banner
 	title "Available tasks"
 	awk 'BEGIN {FS = " { [#][#][ ]?"} /^([a-zA-Z_-]*:?.*)(\{ )?[#][#][ ]?/ \
 		{printf "\033[33m%-34s\033[0m %s\n", $1, $2}' $0 |\
@@ -69,7 +70,6 @@ function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 	echo -e "${BLUE}You can now use:${RESET} task ${YELLOW}<task>${RESET} <args>"
 }
 
-banner
 if [[ ! "$(declare -F task:${@-help})" ]]; then
 	title "Task not found"
 	echo -e "Task ${RED}$1${RESET} doesn't exist."
