@@ -1,6 +1,6 @@
 # Taskfile ([taskfile.sh](https://taskfile.sh))
 
-A `./Taskfile` is a task runner in plain and easy [Bash](https://nl.wikipedia.org/wiki/Bash). It adds a list of
+A `./Taskfile` is a task runner in plain and easy [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). It adds a list of
 available tasks to your project.
 
 Generate your own Taskfile at [taskfile.sh](https://taskfile.sh).
@@ -14,7 +14,7 @@ Generate your own Taskfile at [taskfile.sh](https://taskfile.sh).
 - Very easy to use
 - Automate your most common tasks (updating, starting, building, etc...)
 - Easy to understand and maintain
-- Automatically generated list of available task
+- Automatically generated list of available tasks
 
 # How does it work?
 
@@ -130,10 +130,10 @@ function task:_help { ## Show all available tasks
 # Credits
 
 This Taskfile setup is based on [Adrian Cooney's Taskfile](https://github.com/adriancooney/Taskfile) and is widely
-adopted by [Enrise](https://enrise.com) in our modified flavour.
+adopted by [Enrise](https://enrise.com) in our modified flavor.
 
 # Contributors
 
 A big thanks to all the contributors of Taskfile!
 
-![contirubtor avatars](https://contrib.rocks/image?repo=enrise/taskfile)
+![contributor avatars](https://contrib.rocks/image?repo=enrise/taskfile)
