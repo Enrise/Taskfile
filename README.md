@@ -87,12 +87,13 @@ Now after running `task shorthand`, your `task` commands will get autocompleted.
 
 Have a (mono)repo with multiple projects, a group of less-used or specialized tasks or just waaay to many tasks for a
 single Taskfile? Splitting your Taskfile might be for you! Using SubTaskfiles allows you to divide your tasks across
-multiple files while still calling them from a single one. Most useful for splitting off a group of tasks that can be
-logically grouped together, like for specific use-cases or because they are rarely used.
+multiple files while still calling them from a single entrypoint (a familiar, regular Taskfile). Most useful for
+splitting off a group of tasks that can be logically grouped together, like for specific use-cases or because they are
+rarely used.
 
 Example use-cases: git-hooks, frontend- / backend-specific tasks, tasks that fix (infrequently occurring) bugs, etc.
 
-SubTaskfiles can't be run directly, but are always run "via" a task in the root Taskfile, like this:
+Tasks in SubTaskfiles are not called directly, but "via" a task in the root Taskfile, like this:
 `Usage: ./Taskfile foo <task> <args>`
 
 ### How
@@ -113,10 +114,13 @@ function task:baz { ## Call `foo baz` directly
 }
 ```
 
-Give SubTaskfile the filename `SubTaskfile`. It needs to contain only the tasks and sections you think useful (while
+Give the SubTaskfile the filename `SubTaskfile`. It needs to contain only the tasks and sections you think useful (while
 still having access to stuff like `file:ensure` from the root Taskfile!), but it has a few notes:
 ```shell
-# When you refer to files in the subTaskfile's directory, you need prefix them with $SUBTASKFILE_DIR
+#!/bin/bash
+# Adding `#!/bin/bash` is optional but recommended, as it hints editors etc. what syntax highlighting to use.
+
+# When you refer to files in the SubTaskfile's directory, you need prefix them with $SUBTASKFILE_DIR
 function task:call-script { ## Call a script
 	"$SUBTASKFILE_DIR/some-script.sh"
 }
