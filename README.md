@@ -85,20 +85,20 @@ Now after running `task shorthand`, your `task` commands will get autocompleted.
 
 ## SubTaskfiles
 
-Have a (mono)repo with multiple projects, a group of less-used or specialized tasks or just waaay to many tasks for a
-single Taskfile? Splitting your Taskfile might be for you! Using SubTaskfiles allows you to divide your tasks across
-multiple files while still calling them from a single entrypoint (a familiar, regular Taskfile). Most useful for
-splitting off a group of tasks that can be logically grouped together, like for specific use-cases or because they are
-rarely used.
+SubTaskfiles allow you to divide your tasks across multiple files while still calling them from a single entrypoint
+(a familiar, regular Taskfile).
 
-Example use-cases: git-hooks, frontend- / backend-specific tasks, tasks that fix (infrequently occurring) bugs, etc.
+Use them to split off groups of tasks that can be logically grouped together, like for specific use-cases or because they are rarely
+used. For example: git-hooks, frontend- / backend-specific tasks, tasks for (infrequently occurring) procedures,
+CI-only tasks, etc.
 
-Tasks in SubTaskfiles are not called directly, but "via" a task in the root Taskfile, like this:
+Tasks in SubTaskfiles are never called directly, but "via" a task in the root Taskfile, like this:
 `Usage: ./Taskfile foo <task> <args>`
 
 ### How
 
 Put this in the root Taskfile:
+
 ```shell
 function task:foo { ## bar
 	SUBTASKFILE_DIR="./path/to/subtaskfile/"
@@ -114,8 +114,10 @@ function task:baz { ## Call `foo baz` directly
 }
 ```
 
-Give the SubTaskfile the filename `SubTaskfile`. It needs to contain only the tasks and sections you think useful (while
-still having access to stuff like `file:ensure` from the root Taskfile!), but it has a few notes:
+Create a file named `SubTaskfile` in a relevant location. It should only contain the tasks and sections you think useful
+for that location (as utility stuff like `task:help`, `BLUE` env vars, `file:ensure`, etc. are provided by the root
+Taskfile), and has a few notes:
+
 ```shell
 #!/bin/bash
 # Adding `#!/bin/bash` is optional but recommended, as it hints editors etc. what syntax highlighting to use.
