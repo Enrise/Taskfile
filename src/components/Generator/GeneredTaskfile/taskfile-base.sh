@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # =========================================================
 # Taskfile gives you a set of quick tasks for your project
 # More info: https://github.com/Enrise/Taskfile
