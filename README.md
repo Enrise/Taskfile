@@ -102,8 +102,10 @@ Put this in the root Taskfile:
 ```shell
 function task:foo { ## bar
 	SUBTASKFILE_DIR="./path/to/subtaskfile/"
+	SUBTASKFILE_TASK="foo"
+	TASKFILE_FILE="$SUBTASKFILE_DIR/SubTaskfile"
 
-	source "$SUBTASKFILE_DIR/SubTaskfile"
+	source "$TASKFILE_FILE"
 
 	task:"${@-_help}"
 }
@@ -133,7 +135,7 @@ function task:call-script { ## Call a script
 
 ### Without this, you cannot run `./Taskfile foo` or `./Taskfile foo help`
 function task:_help { ## Show all available tasks
-	task:help "$SUBTASKFILE_DIR/SubTaskfile"
+	task:help
 }
 ```
 

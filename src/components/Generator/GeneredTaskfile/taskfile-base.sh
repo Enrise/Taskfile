@@ -54,14 +54,16 @@ function title {
 
 # shellcheck disable=SC2120
 function task:help { ## Show all available tasks
-	TASKFILE_FILE=${1-$0}
+	TASKFILE_FILE=${TASKFILE_FILE-$0}
+
 	banner
-	title "Available tasks"
+	title "Available tasks $([[ -n "$SUBTASKFILE_TASK" ]] && echo "for ${YELLOW}$SUBTASKFILE_TASK${RESET}")"
+
 	awk 'BEGIN {FS = " { [#][#][ ]?"} /^([a-zA-Z_-]*:?.*)(\{ )?[#][#][ ]?/ \
 		{printf "\033[33m%-34s\033[0m %s\n", $1, $2}' "$TASKFILE_FILE" |\
 		sed -E "s/[#]{2,}[ ]*/${RESET}/g" |\
 		sed -E "s/function task:*/  /g"
-	echo -e "\n${BLUE}Usage:${RESET} $TASKFILE_FILE ${YELLOW}<task>${RESET} <args>"
+	echo -e "\n${BLUE}Usage:${RESET} ./Taskfile ${YELLOW}$SUBTASKFILE_TASK <task>${RESET} <args>"
 }
 
 function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
