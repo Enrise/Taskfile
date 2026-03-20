@@ -74,10 +74,12 @@
 	}
 
 	pre {
+		position: relative;
 		padding: 1rem;
 		font-size: 0.8rem;
 		background: rgba(16, 0, 31, 0.87);
 		border-radius: 0.5rem;
+		overflow: hidden;
 	}
 
 	code {
@@ -86,12 +88,13 @@
 		padding: 0.2rem;
 		border-radius: 0.2rem;
 	}
+}
 
-	img {
-		border-radius: 0.5rem;
-	}
+.content .preSave {
+	top: 1rem;
 }
 
 .image {
 	max-width: 100%;
+	border-radius: 0.5rem;
 }

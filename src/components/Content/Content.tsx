@@ -8,6 +8,7 @@ import Markdown from 'markdown-to-jsx';
 import { highlighter } from '@/components/Generator/GeneredTaskfile/Highlighter';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import SaveFile from '@/components/Generator/GeneredTaskfile/SaveFile';
 
 const links = [
 	{ href: '/docs', label: 'About Taskfile' },
@@ -41,7 +42,12 @@ const Content = ({ content }: WindowProps): ReactElement => {
 					className={styles.content}
 					options={{
 						overrides: {
-							pre: (original) => <pre>{highlighter(original.children.props.children)}</pre>,
+							pre: (original) => (
+								<pre>
+									<SaveFile content={original.children.props.children} className={styles.preSave} />
+									{highlighter(original.children.props.children)}
+								</pre>
+							),
 							img: ({ alt, src }) => <img className={styles.image} src={src.replace('public/', '/')} alt={alt} />,
 							a: ({ href, props, children }) => {
 								if (href.includes('.md')) {
