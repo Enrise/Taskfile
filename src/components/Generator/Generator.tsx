@@ -9,6 +9,7 @@ import Settings from './Settings';
 import GeneratedTaskfile from './GeneredTaskfile';
 import Form from '@/components/Form';
 import { Font } from './GeneredTaskfile/buildHeader';
+import SubTaskfile from '@/components/Generator/GeneredTaskfile/SubTaskfile';
 
 export type GeneratorSettings = {
 	project: string;
@@ -46,7 +47,7 @@ const Generator = (): ReactElement => {
 				</Window>
 				{hasSubTaskfile && (
 					<Window className={styles.outputWindow} dark>
-						Sub taskfile preview
+						<SubTaskfile />
 					</Window>
 				)}
 			</div>

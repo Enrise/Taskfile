@@ -61,6 +61,10 @@
 	transform: translateY(-50%) scale(1);
 }
 
+.checkbox input:checked + span {
+	background: #a1e1aa76;
+}
+
 .label {
 	user-select: none;
 }
