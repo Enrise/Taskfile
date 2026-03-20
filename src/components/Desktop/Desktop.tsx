@@ -22,8 +22,8 @@ const Desktop = ({ children }: DesktopProps): ReactElement => {
 					<Link href="/" className={`${styles.page} ${path === '/' ? styles.active : ''}`}>
 						Generate <span>your Taskfile</span>
 					</Link>
-					<Link href="/about" className={`${styles.page} ${path === '/about' ? styles.active : ''}`}>
-						About <span>Taskfiles</span>
+					<Link href="/docs" className={`${styles.page} ${path.startsWith('/docs') ? styles.active : ''}`}>
+						Documentation
 					</Link>
 				</div>
 			</div>

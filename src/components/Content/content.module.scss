@@ -1,11 +1,15 @@
 @use 'mixins/from-size' as *;
 
 .container {
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
 	padding: 1rem;
 	margin: 0 auto;
 	width: 100%;
-	max-width: 54rem;
+	max-width: 80rem;
 	line-height: 150%;
+	justify-content: start;
 
 	@include from(small) {
 		padding: 2rem;
@@ -13,13 +17,55 @@
 
 	@include from(medium) {
 		padding: 4rem;
+		gap: 4rem;
+	}
+
+	@include from(large) {
+		flex-direction: row;
+	}
+}
+
+.menu {
+	width: 100%;
+	min-height: 1rem;
+
+	@include from(large) {
+		width: 20rem;
+		flex-shrink: 0;
+		flex-grow: 0;
+	}
+
+	.menuWindow {
+		min-height: 1rem;
+	}
+}
+
+.links {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	a {
+		display: block;
+		padding: 0.5rem 1rem;
+		background: #f0f0f0;
+		font-weight: 'semi-bold';
+		border-radius: 0.5rem;
+		color: #000;
+		transition: background 0.2s;
+
+		&:hover,
+		&.active {
+			background: #a1e1aa76;
+			text-decoration: none;
+		}
 	}
 }
 
 .content {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 1.5rem;
 
 	ul {
 		padding-left: 2rem;
@@ -37,6 +83,10 @@
 		color: #202020;
 		padding: 0.2rem;
 		border-radius: 0.2rem;
+	}
+
+	img {
+		border-radius: 0.5rem;
 	}
 }
 
