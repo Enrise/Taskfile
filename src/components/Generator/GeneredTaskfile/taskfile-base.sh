@@ -50,7 +50,7 @@ RESET=$(printf '\033[0m')
 
 function title {
 	echo -e "\n${BLUE}=>${RESET} $1\n"
-}
+}[[baseFunctions]]
 
 function task:help { ## Show all available tasks
 	TASKFILE_FILE=${TASKFILE_FILE-$0}

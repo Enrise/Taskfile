@@ -1,11 +1,11 @@
 # SubTaskfiles
 
-SubTaskfiles allow you to divide your tasks across multiple files while still calling them from a single entrypoint
-(a familiar, regular Taskfile).
+SubTaskfiles allow you to divide your tasks across multiple files while still calling them from a single entrypoint (a
+familiar, regular Taskfile).
 
-Use them to split off groups of tasks that can be logically grouped together, like for specific use-cases or because they are rarely
-used. For example: git-hooks, frontend- / backend-specific tasks, tasks for (infrequently occurring) procedures,
-CI-only tasks, etc.
+Use them to split off groups of tasks that can be logically grouped together, like for specific use-cases or because
+they are rarely used. For example: git-hooks, frontend- / backend-specific tasks, tasks for (infrequently occurring)
+procedures, CI-only tasks, etc.
 
 Tasks in SubTaskfiles are never called directly, but "via" a task in the root Taskfile, like this:
 `Usage: ./Taskfile foo <task> <args>`

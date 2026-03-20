@@ -1,7 +1,7 @@
 # Taskfile ([taskfile.sh](https://taskfile.sh))
 
-A `./Taskfile` is a task runner in plain and easy [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). It adds a list of
-available tasks to your project.
+A `./Taskfile` is a task runner in plain and easy [Bash](<https://en.wikipedia.org/wiki/Bash_(Unix_shell)>). It adds a
+list of available tasks to your project.
 
 Generate your own Taskfile at [taskfile.sh](https://taskfile.sh).
 

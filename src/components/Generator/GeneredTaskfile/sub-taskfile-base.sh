@@ -9,9 +9,12 @@ function task:example { ## This is an example sub task
 }
 
 # =========================================================
-# Sub Taskfile helper
+# SubTaskfile helper
+#
+# Note: Optional, but without this you can only run
+# `./Taskfile foo` to get help output
 # =========================================================
 
-function task:subtasks-help { # Show all available tasks
-    task:help "$SUBTASKFILE_DIR/SubTaskfile"
+function task:subtask-help { ## Show all available tasks
+	task:help
 }
