@@ -116,18 +116,22 @@ function task:baz { ## Call `foo baz` directly
 
 Create a file named `SubTaskfile` in a relevant location. It should only contain the tasks and sections you think useful
 for that location (as utility stuff like `task:help`, `BLUE` env vars, `file:ensure`, etc. are provided by the root
-Taskfile), and has a few notes:
+Taskfile). This is a full example (with a few README specific explanations marked by ###):
 
 ```shell
-#!/bin/bash
-# Adding `#!/bin/bash` is optional but recommended, as it hints editors etc. what syntax highlighting to use.
+#!/usr/bin/env bash
+### Adding `#!/usr/bin/env bash` is optional but recommended, as it hints editors etc. what syntax highlighting to use.
 
-# When you refer to files in the SubTaskfile's directory, you need prefix them with $SUBTASKFILE_DIR
+### When you refer to files in the SubTaskfile's directory, you need prefix them with $SUBTASKFILE_DIR
 function task:call-script { ## Call a script
 	"$SUBTASKFILE_DIR/some-script.sh"
 }
 
-# Without this, you cannot run `./Taskfile foo` or `./Taskfile foo help`
+# =========================================================
+# SubTaskfile helper
+# =========================================================
+
+### Without this, you cannot run `./Taskfile foo` or `./Taskfile foo help`
 function task:_help { ## Show all available tasks
 	task:help "$SUBTASKFILE_DIR/SubTaskfile"
 }
