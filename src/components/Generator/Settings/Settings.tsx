@@ -80,6 +80,8 @@ const Settings = (): ReactElement => {
 				]}
 			/>
 			<Checkbox name="configureGitHooks">Configure git hooks</Checkbox>
+			<h2>Sub Taskfile</h2>
+			<Checkbox name="subTaskfile">Include Sub Taskfile</Checkbox>
 			<h2>Utilities</h2>
 			<Checkbox name="fileUtilities">File checks</Checkbox>
 			<Checkbox name="appUtilities">Application dependencies</Checkbox>

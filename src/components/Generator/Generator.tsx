@@ -9,6 +9,7 @@ import Settings from './Settings';
 import GeneratedTaskfile from './GeneredTaskfile';
 import Form from '@/components/Form';
 import { Font } from './GeneredTaskfile/buildHeader';
+import SubTaskfile from '@/components/Generator/GeneredTaskfile/SubTaskfile';
 
 export type GeneratorSettings = {
 	project: string;
@@ -17,6 +18,7 @@ export type GeneratorSettings = {
 	developmentProxy: boolean;
 	checkoutGitRequest: 'none' | 'github' | 'gitlab';
 	configureGitHooks: boolean;
+	subTaskfile: boolean;
 	fileUtilities: boolean;
 	appUtilities: boolean;
 };
@@ -32,14 +34,23 @@ const Generator = (): ReactElement => {
 		},
 	});
 
+	const hasSubTaskfile = form.watch('subTaskfile');
+
 	return (
 		<Form className={styles.container} form={form} onSubmit={form.handleSubmit(() => {})}>
 			<Window className={styles.settingsWindow}>
 				<Settings />
 			</Window>
-			<Window className={styles.outputWindow} dark>
-				<GeneratedTaskfile />
-			</Window>
+			<div className={styles.outputContainer}>
+				<Window className={styles.outputWindow} dark>
+					<GeneratedTaskfile />
+				</Window>
+				{hasSubTaskfile && (
+					<Window className={styles.outputWindow} dark>
+						<SubTaskfile />
+					</Window>
+				)}
+			</div>
 		</Form>
 	);
 };

@@ -39,3 +39,18 @@
 	flex-shrink: 1;
 	height: 100%;
 }
+
+.outputContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	flex-grow: 1;
+	flex-shrink: 1;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+
+	@include from(large) {
+		max-height: calc(100dvh - 11.5rem);
+	}
+}

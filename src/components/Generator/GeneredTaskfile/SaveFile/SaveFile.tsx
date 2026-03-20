@@ -6,9 +6,10 @@ import styles from './save-file.module.scss';
 
 type SaveFileProps = {
 	content: string;
+	className?: string;
 };
 
-const SaveFile = ({ content }: SaveFileProps): ReactElement => {
+const SaveFile = ({ content, className = '' }: SaveFileProps): ReactElement => {
 	const [isCopied, setCopied] = useState(false);
 
 	const copyToClipboard = (): void => {
@@ -29,7 +30,7 @@ const SaveFile = ({ content }: SaveFileProps): ReactElement => {
 	};
 
 	return (
-		<div className={styles.container}>
+		<div className={`${styles.container} ${className}`}>
 			<button type="button" className={styles.download} onClick={download} title="Download Taskfile" />
 			<button
 				type="button"
