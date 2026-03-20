@@ -17,6 +17,7 @@ export type GeneratorSettings = {
 	developmentProxy: boolean;
 	checkoutGitRequest: 'none' | 'github' | 'gitlab';
 	configureGitHooks: boolean;
+	subTaskfile: boolean;
 	fileUtilities: boolean;
 	appUtilities: boolean;
 };
@@ -32,14 +33,23 @@ const Generator = (): ReactElement => {
 		},
 	});
 
+	const hasSubTaskfile = form.watch('subTaskfile');
+
 	return (
 		<Form className={styles.container} form={form} onSubmit={form.handleSubmit(() => {})}>
 			<Window className={styles.settingsWindow}>
 				<Settings />
 			</Window>
-			<Window className={styles.outputWindow} dark>
-				<GeneratedTaskfile />
-			</Window>
+			<div className={styles.outputContainer}>
+				<Window className={styles.outputWindow} dark>
+					<GeneratedTaskfile />
+				</Window>
+				{hasSubTaskfile && (
+					<Window className={styles.outputWindow} dark>
+						Sub taskfile preview
+					</Window>
+				)}
+			</div>
 		</Form>
 	);
 };

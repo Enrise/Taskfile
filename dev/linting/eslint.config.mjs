@@ -63,6 +63,6 @@ export default [
 		},
 	},
 	{
-		ignores: ['.next/', 'out/'],
+		ignores: ['.next/', 'out/', 'next-env.d.ts'],
 	},
 ];

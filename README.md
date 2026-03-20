@@ -1,7 +1,7 @@
 # Taskfile ([taskfile.sh](https://taskfile.sh))
 
-A `./Taskfile` is a task runner in plain and easy [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)). It adds a list of
-available tasks to your project.
+A `./Taskfile` is a task runner in plain and easy [Bash](<https://en.wikipedia.org/wiki/Bash_(Unix_shell)>). It adds a
+list of available tasks to your project.
 
 Generate your own Taskfile at [taskfile.sh](https://taskfile.sh).
 
@@ -57,6 +57,7 @@ Running `./Taskfile help`, the `task:help` function is triggered. This task will
 using the double `##` comments you've learned about above. Now it's clear how you can run any other task!
 
 # Advanced
+
 ## Auto-completion
 
 Autocompletion works when you use `zsh` and `oh-my-zsh`. Create the following file in your oh-my-zsh directory
@@ -85,12 +86,12 @@ Now after running `task shorthand`, your `task` commands will get autocompleted.
 
 ## SubTaskfiles
 
-SubTaskfiles allow you to divide your tasks across multiple files while still calling them from a single entrypoint
-(a familiar, regular Taskfile).
+SubTaskfiles allow you to divide your tasks across multiple files while still calling them from a single entrypoint (a
+familiar, regular Taskfile).
 
-Use them to split off groups of tasks that can be logically grouped together, like for specific use-cases or because they are rarely
-used. For example: git-hooks, frontend- / backend-specific tasks, tasks for (infrequently occurring) procedures,
-CI-only tasks, etc.
+Use them to split off groups of tasks that can be logically grouped together, like for specific use-cases or because
+they are rarely used. For example: git-hooks, frontend- / backend-specific tasks, tasks for (infrequently occurring)
+procedures, CI-only tasks, etc.
 
 Tasks in SubTaskfiles are never called directly, but "via" a task in the root Taskfile, like this:
 `Usage: ./Taskfile foo <task> <args>`
