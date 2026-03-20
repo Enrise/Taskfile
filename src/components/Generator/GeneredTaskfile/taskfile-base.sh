@@ -52,7 +52,6 @@ function title {
 	echo -e "\n${BLUE}=>${RESET} $1\n"
 }
 
-# shellcheck disable=SC2120
 function task:help { ## Show all available tasks
 	TASKFILE_FILE=${TASKFILE_FILE-$0}
 
