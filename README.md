@@ -107,7 +107,7 @@ function task:foo { ## bar
 
 	source "$TASKFILE_FILE"
 
-	task:"${@-_help}"
+	task:"${@-help}"
 }
 
 # Optional: use proxy-tasks like this for tasks you want to run straight from the root Taskfile
@@ -133,7 +133,7 @@ function task:call-script { ## Call a script
 # SubTaskfile helper
 # =========================================================
 
-### Without this, you cannot run `./Taskfile foo` or `./Taskfile foo help`
+### Optional, but without this, you can only run `./Taskfile foo` to get help output
 function task:_help { ## Show all available tasks
 	task:help
 }
