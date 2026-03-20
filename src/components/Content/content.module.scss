@@ -1,4 +1,5 @@
 @use 'mixins/from-size' as *;
+@use 'variables/color' as *;
 
 .container {
 	display: flex;
@@ -13,6 +14,7 @@
 
 	@include from(small) {
 		padding: 2rem;
+		gap: 2rem;
 	}
 
 	@include from(medium) {
@@ -56,7 +58,7 @@
 
 		&:hover,
 		&.active {
-			background: #a1e1aa76;
+			background: $color-purple-10;
 			text-decoration: none;
 		}
 	}

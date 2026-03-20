@@ -19,6 +19,8 @@ Generate your own Taskfile at [taskfile.sh](https://taskfile.sh).
 ## Documentation
 
 - [How does it work](/docs/how-does-it-work.md)
+- [Auto completion](/docs/auto-completion.md)
+- [Sub Taskfiles](/docs/sub-taskfiles.md)
 
 ## Credits
 

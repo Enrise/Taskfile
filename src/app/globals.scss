@@ -8,12 +8,12 @@
 }
 
 body {
-	background: #ff00cc; /* fallback for old browsers */
-	background: -webkit-linear-gradient(to left, #ff00cc, #333399); /* Chrome 10-25, Safari 5.1-6 */
+	background: $color-yellow-50; /* fallback for old browsers */
 	background: linear-gradient(
-		to left,
-		#ff00cc,
-		#333399
+		220deg,
+		$color-yellow-50,
+		$color-purple-50,
+		$color-black,
 	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	font-family: var(--font-text), sans-serif;
 }
@@ -25,7 +25,7 @@ pre {
 }
 
 a {
-	color: $color-blue-50;
+	color: $color-purple-50;
 	text-decoration: none;
 }
 

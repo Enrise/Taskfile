@@ -14,7 +14,7 @@ const links = [
 	{ href: '/docs/how-does-it-work', label: 'How does it work?' },
 	{ href: '/docs/auto-completion', label: 'Auto completion' },
 	{ href: '/docs/sub-taskfiles', label: 'Sub Taskfiles' },
-]
+];
 
 type WindowProps = {
 	content: string;
@@ -24,52 +24,50 @@ const Content = ({ content }: WindowProps): ReactElement => {
 	const path = usePathname();
 
 	return (
-	<div className={styles.container}>
-		<div className={styles.menu}>
-			<Window className={styles.menuWindow}>
-				<div className={styles.links}>
-					{links.map(({ href, label }) => (
-						<Link							key={href}
-							href={href}
-							className={path === href ? styles.active : ''}
-						>
-							{label}
-						</Link>
-					))}
-				</div>
-			</Window>
-		</div>
-		<Window>
-			<Markdown
-				className={styles.content}
-				options={{
-					overrides: {
-						pre: (original) => <pre>{highlighter(original.children.props.children)}</pre>,
-						img: ({ alt, src }) => <img className={styles.image} src={src.replace('public/', '/')} alt={alt} />,
-						a: ({ href, props, children }) => {
-							if (href.includes('.md')) {
-								const target = href.replace('.md', '');
+		<div className={styles.container}>
+			<div className={styles.menu}>
+				<Window className={styles.menuWindow}>
+					<div className={styles.links}>
+						{links.map(({ href, label }) => (
+							<Link key={href} href={href} className={path === href ? styles.active : ''}>
+								{label}
+							</Link>
+						))}
+					</div>
+				</Window>
+			</div>
+			<Window>
+				<Markdown
+					className={styles.content}
+					options={{
+						overrides: {
+							pre: (original) => <pre>{highlighter(original.children.props.children)}</pre>,
+							img: ({ alt, src }) => <img className={styles.image} src={src.replace('public/', '/')} alt={alt} />,
+							a: ({ href, props, children }) => {
+								if (href.includes('.md')) {
+									const target = href.replace('.md', '');
+
+									return (
+										<Link href={target === 'README' ? '/' : target} {...props}>
+											{children}
+										</Link>
+									);
+								}
 
 								return (
-									<Link href={target === 'README' ? '/' : target} {...props}>
+									<a href={href} target="_blank" {...props}>
 										{children}
-									</Link>
+									</a>
 								);
-							}
-
-							return (
-								<a href={href} target="_blank" {...props}>
-									{children}
-								</a>
-							);
+							},
 						},
-					},
-				}}
-			>
-				{content}
-			</Markdown>
-		</Window>
-	</div>
-)};
+					}}
+				>
+					{content}
+				</Markdown>
+			</Window>
+		</div>
+	);
+};
 
 export default Content;
