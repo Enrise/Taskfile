@@ -33,7 +33,7 @@ function task:baz { ## Call `foo baz` directly
 
 Create a file named `SubTaskfile` in a relevant location. It should only contain the tasks and sections you think useful
 for that location (as utility stuff like `task:help`, `BLUE` env vars, `file:ensure`, etc. are provided by the root
-Taskfile). This is a full example (with a few README specific explanations marked by ###):
+Taskfile). This is a full example (with a few README specific explanations marked by `###`):
 
 ```shell
 #!/usr/bin/env bash
