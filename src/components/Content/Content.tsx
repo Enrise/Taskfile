@@ -14,7 +14,7 @@ const links = [
 	{ href: '/docs', label: 'About Taskfile' },
 	{ href: '/docs/how-does-it-work', label: 'How does it work?' },
 	{ href: '/docs/auto-completion', label: 'Auto completion' },
-	{ href: '/docs/sub-taskfiles', label: 'Sub Taskfiles' },
+	{ href: '/docs/sub-taskfiles', label: 'SubTaskfiles' },
 ];
 
 type WindowProps = {
