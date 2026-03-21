@@ -2,7 +2,6 @@ import { GeneratorSettings } from '@/components/Generator';
 import buildHeaderFunction from './buildHeader';
 import { renderUtilities } from './helpers';
 import loadTemplate from '@/helpers/loadTemplate';
-import subTaskfileBase from './sub-taskfile-base.sh';
 import taskfileBase from './taskfile-base.sh';
 import customSection from './custom-section.sh';
 import renderAddons from './addons';
@@ -62,8 +61,4 @@ export const taskfile = (settings: GeneratorSettings): string => {
 		globals: renderFragment(addons.globals, `# Define global variables here`),
 		baseFunctions: renderFragment(addons.baseFunctions),
 	});
-};
-
-export const subTaskfile = (): string => {
-	return loadTemplate(subTaskfileBase);
 };

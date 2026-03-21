@@ -36,6 +36,7 @@ function project:update {
 
 # =========================================================
 ## Taskfile
+# Caution: core functionality, down here be dragons
 # =========================================================
 
 set -eo pipefail

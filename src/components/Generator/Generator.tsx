@@ -9,7 +9,7 @@ import Settings from './Settings';
 import GeneratedTaskfile from './GeneredTaskfile';
 import Form from '@/components/Form';
 import { Font } from './GeneredTaskfile/buildHeader';
-import SubTaskfile from '@/components/Generator/GeneredTaskfile/SubTaskfile';
+import SubTaskfile from './GeneredTaskfile/addons/subTaskfile/SubTaskfile';
 
 export type GeneratorSettings = {
 	project: string;
