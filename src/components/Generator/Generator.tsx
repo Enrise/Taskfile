@@ -38,15 +38,15 @@ const Generator = (): ReactElement => {
 
 	return (
 		<Form className={styles.container} form={form} onSubmit={form.handleSubmit(() => {})}>
-			<Window className={styles.settingsWindow}>
+			<Window title="Taskfile settings" className={styles.settingsWindow}>
 				<Settings />
 			</Window>
 			<div className={styles.outputContainer}>
-				<Window className={styles.outputWindow} dark>
+				<Window className={styles.outputWindow} title="./Taskfile" dark>
 					<GeneratedTaskfile />
 				</Window>
 				{hasSubTaskfile && (
-					<Window className={styles.outputWindow} dark>
+					<Window className={styles.outputWindow} title="./frontend/SubTaskfile" dark>
 						<SubTaskfile />
 					</Window>
 				)}

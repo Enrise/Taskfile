@@ -27,7 +27,7 @@ const Content = ({ content }: WindowProps): ReactElement => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.menu}>
-				<Window className={styles.menuWindow}>
+				<Window title="Documentation" className={styles.menuWindow}>
 					<div className={styles.links}>
 						{links.map(({ href, label }) => (
 							<Link key={href} href={href} className={path === href ? styles.active : ''}>
