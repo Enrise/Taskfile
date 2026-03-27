@@ -49,6 +49,16 @@ RESET=$(printf '\033[0m')
 
 [[globals]]
 
+function run-task {
+	if [[ ! "$(declare -F task:${@-help})" ]]; then
+		title "Task not found"
+		echo -e "Task ${RED}$1${RESET} doesn't exist."
+		task:help
+		exit 1
+	fi
+	task:${@-help}
+}
+
 function title {
 	echo -e "\n${BLUE}=>${RESET} $1\n"
 }[[baseFunctions]]
@@ -74,10 +84,4 @@ function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 	echo -e "${BLUE}You can now use:${RESET} task ${YELLOW}<task>${RESET} <args>"
 }
 
-if [[ ! "$(declare -F task:${@-help})" ]]; then
-	title "Task not found"
-	echo -e "Task ${RED}$1${RESET} doesn't exist."
-	task:help
-	exit 1
-fi
-task:${@-help}
+run-task "$@"
