@@ -59,9 +59,17 @@ function run-task {
 	task:${@-help}
 }
 
+function subtaskfile { # use: subtaskfile $SUBTASK_NAME $SUBTASKFILE_PATH
+	SUBTASKFILE_TASK="$1" && shift
+	SUBTASKFILE_PATH="$1" && shift
+	TASKFILE_FILE="$SUBTASKFILE_PATH/SubTaskfile"
+	source "$TASKFILE_FILE"
+	run-task "$@"
+}
+
 function title {
 	echo -e "\n${BLUE}=>${RESET} $1\n"
-}[[baseFunctions]]
+}
 
 function task:help { ## Show all available tasks
 	TASKFILE_FILE=${TASKFILE_FILE-$0}

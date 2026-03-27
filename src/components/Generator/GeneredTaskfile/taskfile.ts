@@ -17,7 +17,6 @@ export type TaskfileAddons = {
 	customSections: string[];
 	utilityFunctions: string[];
 	globals: string[];
-	baseFunctions: string[];
 };
 
 export const taskfile = (settings: GeneratorSettings): string => {
@@ -31,7 +30,6 @@ export const taskfile = (settings: GeneratorSettings): string => {
 		customSections: [],
 		utilityFunctions: [],
 		globals: [],
-		baseFunctions: [],
 	};
 
 	renderAddons(settings, addons);
@@ -59,6 +57,5 @@ export const taskfile = (settings: GeneratorSettings): string => {
 		customSections: renderFragment(addons.customSections, loadTemplate(customSection)),
 		utilitySection: renderUtilities(addons.utilityFunctions),
 		globals: renderFragment(addons.globals, `# Define global variables here`),
-		baseFunctions: renderFragment(addons.baseFunctions),
 	});
 };
