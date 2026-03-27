@@ -4,6 +4,7 @@ import styles from './highlighter.module.css';
 
 enum RendererType {
 	EmptyLines,
+	HashBang,
 	TaskDefinitions,
 	FunctionDefinitions,
 	Sections,
@@ -25,6 +26,14 @@ export const lineRenderers: Record<RendererType, LineRenderer> = {
 	[RendererType.EmptyLines]: {
 		test: (line) => line.trim() === '',
 		render: (_, i) => <div key={i}>&nbsp;</div>,
+	},
+	[RendererType.HashBang]: {
+		test: (line) => line.trim() === '#!/usr/bin/env bash',
+		render: (line, i) => (
+			<div key={i} className={styles['text-gray']}>
+				{line}
+			</div>
+		),
 	},
 	[RendererType.TaskDefinitions]: {
 		test: (line) => /^function\stask:+[a-zA-Z-_:]+/.test(line),

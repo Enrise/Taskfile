@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # =========================================================
 # Taskfile gives you a set of quick tasks for your project
 # More info: https://github.com/Enrise/Taskfile
@@ -36,6 +36,7 @@ function project:update {
 
 # =========================================================
 ## Taskfile
+# Caution: core functionality, down here be dragons
 # =========================================================
 
 set -eo pipefail
@@ -48,18 +49,37 @@ RESET=$(printf '\033[0m')
 
 [[globals]]
 
+function run-task {
+	if [[ ! "$(declare -F task:${@-help})" ]]; then
+		title "Task not found"
+		echo -e "Task ${RED}$1${RESET} doesn't exist."
+		task:help
+		exit 1
+	fi
+	task:${@-help}
+}
+
+function subtaskfile { # use: subtaskfile $SUBTASK_NAME $SUBTASKFILE_PATH
+	SUBTASKFILE_TASK="$1" && shift
+	SUBTASKFILE_PATH="$1" && shift
+	TASKFILE_FILE="$SUBTASKFILE_PATH/SubTaskfile"
+	source "$TASKFILE_FILE"
+	run-task "$@"
+}
+
 function title {
 	echo -e "\n${BLUE}=>${RESET} $1\n"
 }
 
 function task:help { ## Show all available tasks
+	TASKFILE_FILE=${TASKFILE_FILE-$0}
 	banner
-	title "Available tasks"
+	title "Available tasks $([[ -n "$SUBTASKFILE_TASK" ]] && echo "for ${YELLOW}$SUBTASKFILE_TASK${RESET}")"
 	awk 'BEGIN {FS = " { [#][#][ ]?"} /^([a-zA-Z_-]*:?.*)(\{ )?[#][#][ ]?/ \
-		{printf "\033[33m%-34s\033[0m %s\n", $1, $2}' $0 |\
+		{printf "\033[33m%-34s\033[0m %s\n", $1, $2}' "$TASKFILE_FILE" |\
 		sed -E "s/[#]{2,}[ ]*/${RESET}/g" |\
 		sed -E "s/function task:*/  /g"
-	echo -e "\n${BLUE}Usage:${RESET} ./Taskfile ${YELLOW}<task>${RESET} <args>"
+	echo -e "\n${BLUE}Usage:${RESET} ./Taskfile ${YELLOW}$SUBTASKFILE_TASK <task>${RESET} <args>"
 }
 
 function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
@@ -70,10 +90,4 @@ function task:shorthand { ## Create CLI shorthand task instead of ./Taskfile
 	echo -e "${BLUE}You can now use:${RESET} task ${YELLOW}<task>${RESET} <args>"
 }
 
-if [[ ! "$(declare -F task:${@-help})" ]]; then
-	title "Task not found"
-	echo -e "Task ${RED}$1${RESET} doesn't exist."
-	task:help
-	exit 1
-fi
-task:${@-help}
+run-task "$@"
