@@ -46,7 +46,7 @@ const Generator = (): ReactElement => {
 					<GeneratedTaskfile />
 				</Window>
 				{hasSubTaskfile && (
-					<Window className={styles.outputWindow} title="./frontend/SubTaskfile" dark>
+					<Window className={styles.outputWindow} title="./frontend-folder/SubTaskfile" dark>
 						<SubTaskfile />
 					</Window>
 				)}
