@@ -29,7 +29,11 @@ export const lineRenderers: Record<RendererType, LineRenderer> = {
 	},
 	[RendererType.HashBang]: {
 		test: (line) => line.trim() === '#!/usr/bin/env bash',
-		render: (line, i) => <div key={i} className={styles['text-gray']}>{line}</div>,
+		render: (line, i) => (
+			<div key={i} className={styles['text-gray']}>
+				{line}
+			</div>
+		),
 	},
 	[RendererType.TaskDefinitions]: {
 		test: (line) => /^function\stask:+[a-zA-Z-_:]+/.test(line),
