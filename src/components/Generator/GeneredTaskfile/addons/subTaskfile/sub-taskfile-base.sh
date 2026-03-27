@@ -8,13 +8,3 @@ function task:example { ## This is an example sub task
 	echo -e "./SubTaskfile location: ${YELLOW}$SUBTASKFILE_PATH${RESET}"
 	echo -e "${GREEN}Success!${RESET}"
 }
-
-# =========================================================
-# SubTaskfile helper
-# Note: Optional, if you want to have an explicit
-#       SubTaskfile help command (can't be named `help`)
-# =========================================================
-
-function task:subtask-help { ## Show all available sub-tasks
-	task:help
-}

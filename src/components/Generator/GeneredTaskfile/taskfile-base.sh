@@ -65,10 +65,8 @@ function title {
 
 function task:help { ## Show all available tasks
 	TASKFILE_FILE=${TASKFILE_FILE-$0}
-
 	banner
 	title "Available tasks $([[ -n "$SUBTASKFILE_TASK" ]] && echo "for ${YELLOW}$SUBTASKFILE_TASK${RESET}")"
-
 	awk 'BEGIN {FS = " { [#][#][ ]?"} /^([a-zA-Z_-]*:?.*)(\{ )?[#][#][ ]?/ \
 		{printf "\033[33m%-34s\033[0m %s\n", $1, $2}' "$TASKFILE_FILE" |\
 		sed -E "s/[#]{2,}[ ]*/${RESET}/g" |\
