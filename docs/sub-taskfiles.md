@@ -12,7 +12,8 @@ Tasks in SubTaskfiles are never called directly, but "via" a task in the root Ta
 
 ## Live example
 
-In the Taskfile generator, you can check the "Include SubTaskfile example" checkbox, to see a full implementation example.
+In the Taskfile generator, you can check the "Include SubTaskfile example" checkbox, to see a full implementation
+example.
 
 ## How does it work
 
