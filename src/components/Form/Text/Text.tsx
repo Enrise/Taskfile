@@ -1,4 +1,4 @@
-import { HTMLAttributes, HTMLInputAutoCompleteAttribute, HTMLInputTypeAttribute, ReactElement } from 'react';
+import { HTMLInputAutoCompleteAttribute, HTMLInputTypeAttribute, InputHTMLAttributes, ReactElement } from 'react';
 import { RegisterOptions, useFormContext } from 'react-hook-form';
 
 import FormError from '@/components/Form/Error';
@@ -6,12 +6,12 @@ import FormError from '@/components/Form/Error';
 import styles from '../form.module.css';
 
 type TextInputProps = {
-	title: string;
+	title?: string;
 	name: string;
 	options?: RegisterOptions;
 	type?: HTMLInputTypeAttribute;
 	autoComplete?: HTMLInputAutoCompleteAttribute;
-} & HTMLAttributes<HTMLInputElement>;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 const TextInput = ({
 	name,
@@ -25,7 +25,7 @@ const TextInput = ({
 
 	return (
 		<label className={styles.label}>
-			<span className={styles.title}>{title}</span>{' '}
+			{title && <span className={styles.title}>{title}</span>}{' '}
 			<input
 				className={styles.input}
 				{...form.register(name, options)}

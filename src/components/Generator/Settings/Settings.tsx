@@ -8,6 +8,7 @@ import RadioInput from '@/components/Form/Radio';
 import { useFormContext } from 'react-hook-form';
 import { GeneratorSettings } from '@/components/Generator';
 import Checkbox from '@/components/Form/Checkbox';
+import LocalDomains from '@/components/Generator/GeneredTaskfile/addons/localHosts/LocalDomains';
 
 const Settings = (): ReactElement => {
 	const form = useFormContext<GeneratorSettings>();
@@ -80,6 +81,9 @@ const Settings = (): ReactElement => {
 				]}
 			/>
 			<Checkbox name="configureGitHooks">Configure git hooks</Checkbox>
+			<h2>Local hosts</h2>
+			<Checkbox name="localHosts">Check and add local domains</Checkbox>
+			{settings.localHosts && <LocalDomains />}
 			<h2>SubTaskfile</h2>
 			<Checkbox name="subTaskfile">Include SubTaskfile example</Checkbox>
 			<h2>Utilities</h2>
