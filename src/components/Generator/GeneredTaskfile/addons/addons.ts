@@ -3,6 +3,7 @@ import { TaskfileAddons } from '@/components/Generator/GeneredTaskfile/taskfile'
 
 import runtime from './runtime';
 import git from './git';
+import localHosts from './localHosts';
 import subTaskfile from './subTaskfile';
 import fileUtilities from './fileUtilities';
 import appUtilities from '@/components/Generator/GeneredTaskfile/addons/appUtilities';
@@ -16,6 +17,7 @@ import appUtilities from '@/components/Generator/GeneredTaskfile/addons/appUtili
 const renderAddons = (settings: GeneratorSettings, addons: TaskfileAddons): void => {
 	runtime(settings, addons);
 	git(settings, addons);
+	localHosts(settings, addons);
 	fileUtilities(settings, addons);
 	appUtilities(settings, addons);
 	subTaskfile(settings, addons);

@@ -96,7 +96,7 @@ export const lineRenderers: Record<RendererType, LineRenderer> = {
 		},
 	},
 	[RendererType.Conditionals]: {
-		test: (line) => /^if+|^then+|^else+|^fi/.test(line.trim()),
+		test: (line) => /^if+|^then+|^for+|^done+|^else+|^fi/.test(line.trim()),
 		render: (line, i) => (
 			<div key={i} className={styles['text-pink']}>
 				{line}
